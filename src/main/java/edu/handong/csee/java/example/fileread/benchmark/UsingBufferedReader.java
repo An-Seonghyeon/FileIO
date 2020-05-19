@@ -1,7 +1,7 @@
 package edu.handong.csee.java.example.fileread.benchmark;
 
 import java.io.*;
-
+import java.util.Scanner;
 /**
  * Created by sherxon on 4/23/17. https://github.com/sherxon/AlgoDS/tree/master/src/oi
  */
@@ -10,10 +10,14 @@ public class UsingBufferedReader {
 
 
         //-------------- Test reading 1 MB file. --------------------
-
+    	
+    	System.out.println("File Name(1MB): ");
+		Scanner keyboardOneMB = new Scanner(System.in);
+        String fileOneMB = keyboardOneMB.nextLine();
+        
         StopWatch.start();
-
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+        
+        BufferedReader inputStream= new BufferedReader(new FileReader(fileOneMB));
         while (inputStream.read()!=-1){}
 
         long duration = StopWatch.stop();
@@ -21,19 +25,25 @@ public class UsingBufferedReader {
         
         inputStream.close();
 
-
         //-------------- Test reading 10 MB file. --------------------
-
+        
+        System.out.println("File Name(10MB): ");
+        Scanner keyboardTenMB = new Scanner(System.in);
+        String fileTenMB = keyboardTenMB.nextLine();
+        
         StopWatch.start();
-
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+        
+        BufferedReader inputStream2= new BufferedReader(new FileReader(fileTenMB));
         while (inputStream2.read()!=-1){}
 
         long duration2 = StopWatch.stop();
         System.out.println(duration2 + " milsec");
 
         inputStream2.close();
-
+        
+        keyboardOneMB.close();
+        keyboardTenMB.close();
+        
         /*
         //-------------- Test reading 100 MB file. --------------------
 
